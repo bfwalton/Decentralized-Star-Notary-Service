@@ -4,7 +4,7 @@ pragma solidity >=0.4.24;
 import "../app/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 // StarNotary Contract declaration inheritance the ERC721 openzeppelin implementation
-abstract contract StarNotary is ERC721 {
+contract StarNotary is ERC721 {
 
     // Star data
     struct Star {
@@ -14,13 +14,12 @@ abstract contract StarNotary is ERC721 {
     // Implement Task 1 Add a name and symbol properties
     // name: Is a short name to your token
     // symbol: Is a short string like 'USD' -> 'American Dollar'
-    
+    constructor() ERC721("STARCOIN", "STAR") {}
 
     // mapping the Star with the Owner Address
     mapping(uint256 => Star) public tokenIdToStarInfo;
     // mapping the TokenId and price
     mapping(uint256 => uint256) public starsForSale;
-
     
     // Create Star using the Struct
     function createStar(string memory _name, uint256 _tokenId) public { // Passing the name and tokenId as a parameters
